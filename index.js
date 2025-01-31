@@ -1,111 +1,125 @@
-import React from 'react';
-import { Users, Star, Medal, Sparkles } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNU FINTECH AI 10th - Team7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
-const TeamIntroduction = () => {
-  const teamData = {
-    leader: {
-      name: "김민준",
-      role: "팀장",
-      description: "10년 경력의 프로젝트 관리 전문가",
-      specialty: "프로젝트 기획 및 팀 리드",
-      email: "minjun.kim@example.com"
-    },
-    members: [
-      {
-        name: "이서연",
-        role: "디자인 리드",
-        description: "UI/UX 디자인 전문가",
-        specialty: "사용자 중심 디자인",
-        email: "seoyeon.lee@example.com"
-      },
-      {
-        name: "박지훈",
-        role: "백엔드 개발자",
-        description: "클라우드 아키텍처 전문가",
-        specialty: "시스템 설계 및 최적화",
-        email: "jihun.park@example.com"
-      },
-      {
-        name: "최유진",
-        role: "프론트엔드 개발자",
-        description: "모던 웹 개발 전문가",
-        specialty: "반응형 웹 개발",
-        email: "yujin.choi@example.com"
-      },
-      {
-        name: "정현우",
-        role: "데이터 분석가",
-        description: "빅데이터 처리 전문가",
-        specialty: "데이터 시각화",
-        email: "hyunwoo.jung@example.com"
-      },
-      {
-        name: "강은지",
-        role: "마케팅 매니저",
-        description: "디지털 마케팅 전문가",
-        specialty: "콘텐츠 전략",
-        email: "eunji.kang@example.com"
-      }
-    ]
-  };
+        .header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 p-8">
-      <div className="max-w-6xl mx-auto">
-        {/* 헤더 */}
-        <div className="text-center mb-16 relative">
-          <h1 className="text-5xl font-bold text-white mb-4 animate-pulse">
-            Dream Team
-            <Sparkles className="inline-block ml-2 text-yellow-400" />
-          </h1>
-          <p className="text-xl text-blue-200">함께 만들어가는 미래</p>
-        </div>
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
 
-        {/* 팀장 카드 */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-12 transform hover:scale-105 transition-all duration-300">
-          <div className="flex items-center gap-6">
-            <div className="w-32 h-32 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-              <Medal size={48} className="text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <h2 className="text-3xl font-bold text-white">{teamData.leader.name}</h2>
-                <span className="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  {teamData.leader.role}
-                </span>
-              </div>
-              <p className="text-blue-200 mb-2">{teamData.leader.description}</p>
-              <p className="text-blue-300">전문분야: {teamData.leader.specialty}</p>
-              <p className="text-blue-300">{teamData.leader.email}</p>
-            </div>
-          </div>
-        </div>
+        .header h2 {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+        }
 
-        {/* 팀원 그리드 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamData.members.map((member, index) => (
-            <div 
-              key={index}
-              className="bg-white/5 backdrop-blur-lg rounded-xl p-6 transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
-                <Users size={32} className="text-white" />
-              </div>
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                <span className="bg-blue-400/20 text-blue-200 px-2 py-1 rounded-full text-xs">
-                  {member.role}
-                </span>
-              </div>
-              <p className="text-blue-200 text-sm mb-2">{member.description}</p>
-              <p className="text-blue-300 text-sm">전문분야: {member.specialty}</p>
-              <p className="text-blue-300 text-sm">{member.email}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+        .team-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .team-member-content {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .pagination {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #007BFF;
+            border: 1px solid #007BFF;
+            padding: 10px 15px;
+            border-radius: 50%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination a.active {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .pagination a:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SNU FINTECH AI 10th</h1>
+        <h2>Team7</h2>
     </div>
-  );
-};
 
-export default TeamIntroduction;
+    <div class="team-container">
+        <div class="team-member">
+            <img src="https://via.placeholder.com/150" alt="Amanda Fisher">
+            <div class="team-member-content">
+                <h3>Amanda Fisher</h3>
+                <p>Team Leader</p>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+        </div>
+    </div>
+</body>
+</html>
